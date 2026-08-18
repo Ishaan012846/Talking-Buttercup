@@ -6,9 +6,7 @@ import { BatmanLogo } from './BatmanLogo';
  * BoyfriendAvatar Component
  * Clean Avatar Face (Lower Dark Semicircle Removed!):
  * - Character likeness matching reference photo
- * - Clean chin & jawline (Zero dark lower semicircle!)
- * - Real Morphing Mouth & Eye Expressions (Blink, Duck > <, Slap ❌, Dizzy 🌀, Heart 💖)
- * - White Crewneck T-Shirt with Lipstick Batman Logo, Denim Jeans & Red Sneakers
+ * - Responsive mobile scaling & spacing
  */
 export const BoyfriendAvatar = ({
   activeRoom = 'vent',
@@ -47,7 +45,7 @@ export const BoyfriendAvatar = ({
   }, []);
 
   return (
-    <div className="relative flex flex-col items-center justify-center w-full max-w-lg h-[86vh] max-h-[740px] pointer-events-auto select-none">
+    <div className="relative flex flex-col items-center justify-end w-full max-w-lg h-[80vh] max-h-[680px] pointer-events-auto select-none pb-14 sm:pb-6">
       <motion.div
         drag={activeRoom === 'vent' ? 'x' : false}
         dragConstraints={{ left: 0, right: 0 }}
@@ -65,10 +63,10 @@ export const BoyfriendAvatar = ({
           y: { duration: isTummyTickled ? 0.4 : isToeTapped ? 0.5 : 4, repeat: isTummyTickled || isToeTapped ? 0 : Infinity, ease: 'easeInOut' },
           x: { type: 'spring', stiffness: 220, damping: 20 },
         }}
-        className="relative flex flex-col items-center w-full h-full cursor-grab active:cursor-grabbing justify-end pb-4"
+        className="relative flex flex-col items-center w-full h-full cursor-grab active:cursor-grabbing justify-end pb-2"
       >
         {/* ================= 1. HIGH-PRECISION 3D ANIMATED CHARACTER ================= */}
-        <div className="relative w-80 sm:w-96 h-80 sm:h-96 flex items-center justify-center filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.55)]">
+        <div className="relative w-64 sm:w-88 h-64 sm:h-88 flex items-center justify-center filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.55)]">
           <svg viewBox="0 0 400 400" className="w-full h-full overflow-visible">
             <defs>
               {/* 3D Skin Gradient matching Photo */}
@@ -121,7 +119,7 @@ export const BoyfriendAvatar = ({
               <circle cx="125" cy="240" r="30" fill="#e11d48" opacity="0.65" filter="blur(8px)" />
             )}
 
-            {/* REAL EYEBROWS (FURROW & ARCH ON INTERACTIONS) */}
+            {/* REAL EYEBROWS */}
             <g>
               <path
                 d={
@@ -151,7 +149,7 @@ export const BoyfriendAvatar = ({
               />
             </g>
 
-            {/* REAL EYES (BLINK, WINK, SQUINT & DEFORM ON FACE) */}
+            {/* REAL EYES */}
             <g onClick={onCheekSlap} className="cursor-pointer">
               {/* Left Eye Socket */}
               <ellipse cx="146" cy="182" rx="25" ry="22" fill="#ffffff" stroke="#1c1917" strokeWidth="4" />
@@ -191,7 +189,7 @@ export const BoyfriendAvatar = ({
             {/* REAL NOSE */}
             <path d="M 194,185 Q 200,212 206,212 Q 212,212 216,206" fill="none" stroke="#8c5938" strokeWidth="4" strokeLinecap="round" />
 
-            {/* REAL FULL DARK MOUSTACHE (PHOTO STYLE) */}
+            {/* REAL MOUSTACHE */}
             <path
               d="M 135,236 Q 200,224 265,236 C 245,258 155,258 135,236 Z"
               fill="#1c1917"
@@ -200,7 +198,7 @@ export const BoyfriendAvatar = ({
               filter="url(#headShadow)"
             />
 
-            {/* REAL MORPHING MOUTH (SYNCED WITH VOICE & INTERACTIONS) */}
+            {/* REAL MORPHING MOUTH */}
             <g>
               {isRepeatingVoice ? (
                 <path d="M 175,252 Q 200,290 225,252 Z" fill="#780216" stroke="#1c1917" strokeWidth="4" />
@@ -240,7 +238,7 @@ export const BoyfriendAvatar = ({
         </div>
 
         {/* Neck */}
-        <div className="w-14 h-6 bg-gradient-to-b from-[#c48c66] to-[#965f3d] border-x-2 border-[#8c5938] -mt-6 z-10" />
+        <div className="w-12 sm:w-14 h-5 sm:h-6 bg-gradient-to-b from-[#c48c66] to-[#965f3d] border-x-2 border-[#8c5938] -mt-5 z-10" />
 
         {/* ================= 2. WHITE CREWNECK T-SHIRT WITH LIPSTICK BATMAN LOGO ================= */}
         <div
@@ -255,28 +253,24 @@ export const BoyfriendAvatar = ({
               scaleY: isShirtRippling ? [1, 0.88, 1.08, 1] : 1,
             }}
             transition={{ duration: 0.5 }}
-            className="w-60 sm:w-68 h-46 sm:h-52 bg-white rounded-t-[40px] rounded-b-[26px] border-4 border-slate-200 shadow-[0_18px_36px_rgba(0,0,0,0.3)] relative flex flex-col items-center justify-start pt-3 overflow-visible"
+            className="w-52 sm:w-68 h-40 sm:h-52 bg-white rounded-t-[36px] sm:rounded-t-[40px] rounded-b-[22px] sm:rounded-b-[26px] border-4 border-slate-200 shadow-[0_18px_36px_rgba(0,0,0,0.3)] relative flex flex-col items-center justify-start pt-2 sm:pt-3 overflow-visible"
           >
             {/* Crewneck Collar */}
-            <div className="w-22 h-6 rounded-b-full border-b-4 border-slate-300 bg-slate-100 shadow-inner -mt-4" />
+            <div className="w-20 sm:w-22 h-5 sm:h-6 rounded-b-full border-b-4 border-slate-300 bg-slate-100 shadow-inner -mt-3.5 sm:-mt-4" />
 
             {/* Short Sleeves */}
-            <div className="absolute -left-8 top-2 w-11 h-22 bg-white border-l-4 border-b-4 border-slate-300 rounded-l-3xl transform -rotate-12 shadow-md" />
-            <div className="absolute -right-8 top-2 w-11 h-22 bg-white border-r-4 border-b-4 border-slate-300 rounded-r-3xl transform rotate-12 shadow-md" />
-
-            {/* 3D Fold Lines */}
-            <div className="absolute top-10 left-7 w-1 h-24 bg-slate-200/80 rounded-full" />
-            <div className="absolute top-10 right-7 w-1 h-24 bg-slate-200/80 rounded-full" />
+            <div className="absolute -left-7 sm:-left-8 top-2 w-9 sm:w-11 h-18 sm:h-22 bg-white border-l-4 border-b-4 border-slate-300 rounded-l-3xl transform -rotate-12 shadow-md" />
+            <div className="absolute -right-7 sm:-right-8 top-2 w-9 sm:w-11 h-18 sm:h-22 bg-white border-r-4 border-b-4 border-slate-300 rounded-r-3xl transform rotate-12 shadow-md" />
 
             {/* PROMINENT LIPSTICK BATMAN LOGO */}
-            <div className="mt-2 w-38 sm:w-46 h-26 sm:h-30 flex items-center justify-center filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.35)] hover:scale-105 transition-transform">
-              <BatmanLogo width={170} height={100} />
+            <div className="mt-1 sm:mt-2 w-32 sm:w-46 h-22 sm:h-30 flex items-center justify-center filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.35)] hover:scale-105 transition-transform">
+              <BatmanLogo width={150} height={90} />
             </div>
 
             {/* Folded Arms & Hands */}
-            <div className="absolute bottom-2 w-52 sm:w-60 h-10 rounded-full bg-slate-100 border-2 border-slate-300 shadow-md flex items-center justify-between px-4">
-              <div className="w-8 h-8 rounded-full bg-[#c48c66] border border-[#8c5938]" />
-              <div className="w-8 h-8 rounded-full bg-[#c48c66] border border-[#8c5938]" />
+            <div className="absolute bottom-2 w-44 sm:w-60 h-8 sm:h-10 rounded-full bg-slate-100 border-2 border-slate-300 shadow-md flex items-center justify-between px-3 sm:px-4">
+              <div className="w-6 sm:w-8 h-6 sm:h-8 rounded-full bg-[#c48c66] border border-[#8c5938]" />
+              <div className="w-6 sm:w-8 h-6 sm:h-8 rounded-full bg-[#c48c66] border border-[#8c5938]" />
             </div>
           </motion.div>
         </div>
@@ -284,48 +278,29 @@ export const BoyfriendAvatar = ({
         {/* ================= 3. DENIM JEANS & LEGS ================= */}
         <div
           onClick={onTummyTap}
-          className="relative z-10 flex items-center justify-center gap-3 -mt-2 cursor-pointer"
+          className="relative z-10 flex items-center justify-center gap-2.5 sm:gap-3 -mt-2 cursor-pointer"
         >
-          {/* Left Leg */}
-          <div className="w-15 sm:w-17 h-28 sm:h-32 bg-gradient-to-b from-[#1d4ed8] to-[#1e40af] rounded-b-2xl border-2 border-blue-900 shadow-md flex flex-col justify-between p-1">
-            <div className="w-full h-1 bg-blue-400/40 rounded" />
-            <div className="w-full h-1 bg-blue-400/40 rounded" />
-          </div>
-
-          {/* Right Leg */}
-          <div className="w-15 sm:w-17 h-28 sm:h-32 bg-gradient-to-b from-[#1d4ed8] to-[#1e40af] rounded-b-2xl border-2 border-blue-900 shadow-md flex flex-col justify-between p-1">
-            <div className="w-full h-1 bg-blue-400/40 rounded" />
-            <div className="w-full h-1 bg-blue-400/40 rounded" />
-          </div>
+          <div className="w-13 sm:w-17 h-24 sm:h-32 bg-gradient-to-b from-[#1d4ed8] to-[#1e40af] rounded-b-2xl border-2 border-blue-900 shadow-md flex flex-col justify-between p-1" />
+          <div className="w-13 sm:w-17 h-24 sm:h-32 bg-gradient-to-b from-[#1d4ed8] to-[#1e40af] rounded-b-2xl border-2 border-blue-900 shadow-md flex flex-col justify-between p-1" />
         </div>
 
         {/* ================= 4. RED CARTOON SNEAKERS ================= */}
         <div
           onClick={onToeTap}
-          className="relative z-10 flex items-center justify-center gap-6 -mt-3 cursor-pointer"
+          className="relative z-10 flex items-center justify-center gap-5 sm:gap-6 -mt-3 cursor-pointer"
         >
-          {/* Left Red Sneaker */}
           <motion.div
             animate={{ y: isToeTapped ? -16 : 0 }}
-            className="w-22 sm:w-24 h-10 rounded-2xl bg-gradient-to-r from-rose-600 to-red-500 border-2 border-red-900 shadow-lg flex items-center justify-between px-2 relative"
+            className="w-18 sm:w-24 h-8 sm:h-10 rounded-2xl bg-gradient-to-r from-rose-600 to-red-500 border-2 border-red-900 shadow-lg flex items-center justify-between px-2 relative"
           >
-            <div className="w-6 h-6 rounded-lg bg-white border border-slate-300 shadow-inner" />
-            <div className="flex flex-col gap-1">
-              <div className="w-4 h-0.5 bg-white" />
-              <div className="w-4 h-0.5 bg-white" />
-            </div>
+            <div className="w-5 sm:w-6 h-5 sm:h-6 rounded-lg bg-white border border-slate-300 shadow-inner" />
           </motion.div>
 
-          {/* Right Red Sneaker */}
           <motion.div
             animate={{ y: isToeTapped ? -16 : 0 }}
-            className="w-22 sm:w-24 h-10 rounded-2xl bg-gradient-to-r from-rose-600 to-red-500 border-2 border-red-900 shadow-lg flex items-center justify-between px-2 relative"
+            className="w-18 sm:w-24 h-8 sm:h-10 rounded-2xl bg-gradient-to-r from-rose-600 to-red-500 border-2 border-red-900 shadow-lg flex items-center justify-between px-2 relative"
           >
-            <div className="flex flex-col gap-1">
-              <div className="w-4 h-0.5 bg-white" />
-              <div className="w-4 h-0.5 bg-white" />
-            </div>
-            <div className="w-6 h-6 rounded-lg bg-white border border-slate-300 shadow-inner" />
+            <div className="w-5 sm:w-6 h-5 sm:h-6 rounded-lg bg-white border border-slate-300 shadow-inner" />
           </motion.div>
         </div>
 
