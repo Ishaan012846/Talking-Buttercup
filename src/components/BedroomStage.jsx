@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// DIRECT MODULE IMPORTS (Vite Bundles Images 100% Bulletproof for GitHub Pages!)
-import photoAnjali1 from '../assets/photos/anjali_photo1.jpg';
-import photoCouple from '../assets/photos/couple_photo.jpg';
-import photoAnjali2 from '../assets/photos/anjali_photo2.png';
-import photoAnjali3 from '../assets/photos/anjali_photo3.png';
+// INLINE BASE64 PHOTO IMPORTS (100% Instant Zero-Network Rendering Anywhere!)
+import { photoAnjali1, photoCouple, photoAnjali2, photoAnjali3 } from '../services/photoBase64';
 
 /**
  * BedroomStage Component
- * Garland with Anajli's Real Photos (Direct Bundled Image Imports):
- * - 100% Bulletproof asset resolution on GitHub Pages & mobile browsers!
+ * Garland with Anajli's Real Photos (Inline Base64 Embedded Data):
+ * - 100% Guarantee to render on any URL & device with ZERO broken image icons!
  */
 export const BedroomStage = ({ children, activeRoom = 'vent' }) => {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
