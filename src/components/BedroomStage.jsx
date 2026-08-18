@@ -3,44 +3,44 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 /**
  * BedroomStage Component
- * Garland featuring ONLY Anajli's Real Uploaded Photos & Couple Memories!
- * - Left Side: Anajli Outdoors 🌿 & Anajli & Boyfriend Couple Photo 💖
- * - Right Side: Anajli Night Clock Tower 🌃 & Anajli Star Lights ✨
- * - Wide clear gap in the middle so Buttercup's head is 100% unblocked!
+ * Garland with Anajli's Real Photos (Fixed Base URL for GitHub Pages!):
+ * - Uses import.meta.env.BASE_URL for 100% working image paths on GitHub Pages!
  */
 export const BedroomStage = ({ children, activeRoom = 'vent' }) => {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
 
-  // Left Side Photos (Anajli's Real Uploaded Photos)
+  const baseUrl = import.meta.env.BASE_URL || '/';
+
+  // Left Side Photos
   const leftPhotos = [
     {
       id: 1,
-      src: '/anjali_photo1.jpg',
+      src: `${baseUrl}anjali_photo1.jpg`,
       title: 'Anajli Outdoors 🌿',
       tasselColor: '#0d9488', // Teal
       rotation: -5,
     },
     {
       id: 2,
-      src: '/couple_photo.jpg',
+      src: `${baseUrl}couple_photo.jpg`,
       title: 'Anajli & Boyfriend 💖',
       tasselColor: '#d97706', // Gold
       rotation: 4,
     },
   ];
 
-  // Right Side Photos (Anajli's Real Uploaded Photos)
+  // Right Side Photos
   const rightPhotos = [
     {
       id: 3,
-      src: '/anjali_photo2.png',
+      src: `${baseUrl}anjali_photo2.png`,
       title: 'Anajli Night Clock Tower 🌃',
       tasselColor: '#db2777', // Pink
       rotation: -4,
     },
     {
       id: 4,
-      src: '/anjali_photo3.png',
+      src: `${baseUrl}anjali_photo3.png`,
       title: 'Anajli Star Lights ✨',
       tasselColor: '#0d9488', // Teal
       rotation: 5,
@@ -49,11 +49,10 @@ export const BedroomStage = ({ children, activeRoom = 'vent' }) => {
 
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden select-none bg-gradient-to-b from-[#f7e6d4] via-[#eed4bd] to-[#e4bf9d]">
-      {/* ================= 1. FAIRY LIGHT GARLAND (LEFT & RIGHT ONLY - CENTER CLEAR!) ================= */}
+      {/* ================= 1. FAIRY LIGHT GARLAND ================= */}
       <div className="absolute top-14 inset-x-0 z-20 pointer-events-auto flex flex-col items-center">
         {/* SVG String Line & Fairy Lights */}
         <svg viewBox="0 0 1000 120" className="w-full h-28 overflow-visible">
-          {/* Garland String with Center Arch */}
           <path
             d="M 50,20 Q 250,90 500,30 Q 750,90 950,20"
             fill="none"
@@ -62,7 +61,6 @@ export const BedroomStage = ({ children, activeRoom = 'vent' }) => {
             strokeDasharray="4,2"
           />
 
-          {/* Glowing Fairy Light Bulbs */}
           {[80, 160, 240, 320, 400, 500, 600, 680, 760, 840, 920].map((x, idx) => (
             <g key={idx}>
               <circle cx={x} cy={30 + Math.sin(idx) * 12} r="5" fill="#fef08a" />
@@ -71,7 +69,7 @@ export const BedroomStage = ({ children, activeRoom = 'vent' }) => {
           ))}
         </svg>
 
-        {/* HANGING POLAROID FRAMES (2 ON LEFT & 2 ON RIGHT - ALL ANAJLI'S REAL PHOTOS!) */}
+        {/* HANGING POLAROID FRAMES */}
         <div className="absolute top-6 inset-x-6 sm:inset-x-12 flex justify-between items-start pointer-events-auto max-w-6xl mx-auto w-full">
           {/* Left Group */}
           <div className="flex gap-4 sm:gap-8">
@@ -83,17 +81,14 @@ export const BedroomStage = ({ children, activeRoom = 'vent' }) => {
                 style={{ rotate: photo.rotation }}
                 className="relative flex flex-col items-center cursor-pointer group transition-all"
               >
-                {/* Clothespin Clip */}
                 <div className="w-3 h-5 bg-amber-800 border border-amber-950 rounded-xs shadow-md z-30 -mb-1" />
 
-                {/* White Polaroid Frame */}
                 <div className="w-20 sm:w-28 bg-white rounded-md p-1.5 pt-1.5 pb-5 shadow-[0_8px_20px_rgba(0,0,0,0.25)] border border-stone-200 relative overflow-hidden group-hover:shadow-[0_12px_28px_rgba(0,0,0,0.4)]">
                   <div className="w-full h-16 sm:h-24 bg-stone-900 rounded-sm overflow-hidden relative">
                     <img src={photo.src} alt={photo.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                   </div>
                 </div>
 
-                {/* Hanging Tassel */}
                 <div className="flex flex-col items-center -mt-1 z-20">
                   <div className="w-2 h-2 rounded-full" style={{ backgroundColor: photo.tasselColor }} />
                   <div className="w-3 h-6 rounded-b-md shadow-sm" style={{ backgroundColor: photo.tasselColor }} />
@@ -115,17 +110,14 @@ export const BedroomStage = ({ children, activeRoom = 'vent' }) => {
                 style={{ rotate: photo.rotation }}
                 className="relative flex flex-col items-center cursor-pointer group transition-all"
               >
-                {/* Clothespin Clip */}
                 <div className="w-3 h-5 bg-amber-800 border border-amber-950 rounded-xs shadow-md z-30 -mb-1" />
 
-                {/* White Polaroid Frame */}
                 <div className="w-20 sm:w-28 bg-white rounded-md p-1.5 pt-1.5 pb-5 shadow-[0_8px_20px_rgba(0,0,0,0.25)] border border-stone-200 relative overflow-hidden group-hover:shadow-[0_12px_28px_rgba(0,0,0,0.4)]">
                   <div className="w-full h-16 sm:h-24 bg-stone-900 rounded-sm overflow-hidden relative">
                     <img src={photo.src} alt={photo.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                   </div>
                 </div>
 
-                {/* Hanging Tassel */}
                 <div className="flex flex-col items-center -mt-1 z-20">
                   <div className="w-2 h-2 rounded-full" style={{ backgroundColor: photo.tasselColor }} />
                   <div className="w-3 h-6 rounded-b-md shadow-sm" style={{ backgroundColor: photo.tasselColor }} />
