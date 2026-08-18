@@ -1,28 +1,32 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// DIRECT MODULE IMPORTS (Vite Bundles Images 100% Bulletproof for GitHub Pages!)
+import photoAnjali1 from '../assets/photos/anjali_photo1.jpg';
+import photoCouple from '../assets/photos/couple_photo.jpg';
+import photoAnjali2 from '../assets/photos/anjali_photo2.png';
+import photoAnjali3 from '../assets/photos/anjali_photo3.png';
+
 /**
  * BedroomStage Component
- * Garland with Anajli's Real Photos (Fixed Base URL for GitHub Pages!):
- * - Uses import.meta.env.BASE_URL for 100% working image paths on GitHub Pages!
+ * Garland with Anajli's Real Photos (Direct Bundled Image Imports):
+ * - 100% Bulletproof asset resolution on GitHub Pages & mobile browsers!
  */
 export const BedroomStage = ({ children, activeRoom = 'vent' }) => {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
-
-  const baseUrl = import.meta.env.BASE_URL || '/';
 
   // Left Side Photos
   const leftPhotos = [
     {
       id: 1,
-      src: `${baseUrl}anjali_photo1.jpg`,
+      src: photoAnjali1,
       title: 'Anajli Outdoors 🌿',
       tasselColor: '#0d9488', // Teal
       rotation: -5,
     },
     {
       id: 2,
-      src: `${baseUrl}couple_photo.jpg`,
+      src: photoCouple,
       title: 'Anajli & Boyfriend 💖',
       tasselColor: '#d97706', // Gold
       rotation: 4,
@@ -33,14 +37,14 @@ export const BedroomStage = ({ children, activeRoom = 'vent' }) => {
   const rightPhotos = [
     {
       id: 3,
-      src: `${baseUrl}anjali_photo2.png`,
+      src: photoAnjali2,
       title: 'Anajli Night Clock Tower 🌃',
       tasselColor: '#db2777', // Pink
       rotation: -4,
     },
     {
       id: 4,
-      src: `${baseUrl}anjali_photo3.png`,
+      src: photoAnjali3,
       title: 'Anajli Star Lights ✨',
       tasselColor: '#0d9488', // Teal
       rotation: 5,
