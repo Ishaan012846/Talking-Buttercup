@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply antialiased select-none overflow-hidden bg-slate-950 text-slate-100 font-sans;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+}
+
+/* Custom Arcade & Cartoon Keyframe Animations */
+
+@keyframes micPulseRing {
+  0% {
+    box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 18px rgba(244, 63, 94, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(244, 63, 94, 0);
+  }
+}
+
+@keyframes orbitStar {
+  0% {
+    transform: rotate(0deg) translateX(48px) rotate(0deg) scale(0.9);
+  }
+  50% {
+    transform: rotate(180deg) translateX(58px) rotate(-180deg) scale(1.15);
+  }
+  100% {
+    transform: rotate(360deg) translateX(48px) rotate(-360deg) scale(0.9);
+  }
+}
+
+@keyframes orbitBird {
+  0% {
+    transform: rotate(360deg) translateX(52px) rotate(-360deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) translateX(42px) rotate(-180deg) scale(0.85);
+  }
+  100% {
+    transform: rotate(0deg) translateX(52px) rotate(0deg) scale(1);
+  }
+}
+
+@keyframes floatHeart {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(0.6) rotate(0deg);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(-40px) scale(1.2) rotate(15deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-80px) scale(0.8) rotate(-15deg);
+  }
+}
+
+@keyframes sparkleTrail {
+  0% {
+    opacity: 1;
+    transform: scale(0.4) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.4) rotate(180deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(244, 114, 182, 0.6));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(244, 114, 182, 0.95));
+  }
+}
+
+@keyframes breathingSway {
+  0%, 100% {
+    transform: translateY(0px) scaleY(1);
+  }
+  50% {
+    transform: translateY(-6px) scaleY(1.015);
+  }
+}
+
+@keyframes neonGrid {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 40px;
+  }
+}
+
+.animate-mic-pulse {
+  animation: micPulseRing 1.5s infinite ease-out;
+}
+
+.animate-orbit-star {
+  animation: orbitStar 2.2s infinite linear;
+}
+
+.animate-orbit-bird {
+  animation: orbitBird 2.6s infinite linear;
+}
+
+.animate-float-heart {
+  animation: floatHeart 1.5s ease-out forwards;
+}
+
+.animate-sparkle {
+  animation: sparkleTrail 0.8s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+.animate-breathing {
+  animation: breathingSway 3.5s infinite ease-in-out;
+}
+
+.bg-arcade-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(244, 63, 94, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(244, 63, 94, 0.06) 1px, transparent 1px);
+  animation: neonGrid 8s linear infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(236, 72, 153, 0.5);
+  border-radius: 9999px;
+}
