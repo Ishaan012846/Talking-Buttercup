@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: './', // Ensures relative path assets for GitHub Pages!
+  base: '/Talking-Buttercup/',
   plugins: [react(), tailwindcss()],
   server: {
     host: true,
